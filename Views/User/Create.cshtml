@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Add User";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1 class="mb-4">Add New User</h1>
+<form method="post">
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" name="Nama" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Phone</label>
+        <input type="text" name="NoTelp" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Email</label>
+        <input type="email" name="Email" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Username</label>
+        <input type="text" name="Username" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Password</label>
+        <input type="password" name="Password" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Role</label>
+        <select name="Role" class="form-select" required>
+            <option value="admin">Admin</option>
+            <option value="owner">Owner</option>
+            <option value="waiters">Waiters</option>
+            <option value="cook">Cook</option>
+            <option value="cleaner">Cleaner</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Save</button>
+</form>

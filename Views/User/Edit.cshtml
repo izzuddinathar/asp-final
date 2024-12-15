@@ -1,0 +1,34 @@
+﻿@model Final.Models.User
+
+@{
+    ViewData["Title"] = "Edit User";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1 class="mb-4">Edit User</h1>
+<form method="post">
+    <input type="hidden" name="UserId" value="@Model.UserId" />
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" name="Nama" class="form-control" value="@Model.Nama" required />
+    </div>
+    <div class="mb-3">
+        <label>Phone</label>
+        <input type="text" name="NoTelp" class="form-control" value="@Model.NoTelp" required />
+    </div>
+    <div class="mb-3">
+        <label>Email</label>
+        <input type="email" name="Email" class="form-control" value="@Model.Email" required />
+    </div>
+    <div class="mb-3">
+        <label>Role</label>
+        <select name="Role" class="form-select" required>
+            <option value="admin" selected="@(Model.Role == "admin")">Admin</option>
+            <option value="owner" selected="@(Model.Role == "owner")">Owner</option>
+            <option value="waiters" selected="@(Model.Role == "waiters")">Waiters</option>
+            <option value="cook" selected="@(Model.Role == "cook")">Cook</option>
+            <option value="cleaner" selected="@(Model.Role == "cleaner")">Cleaner</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Update</button>
+</form>

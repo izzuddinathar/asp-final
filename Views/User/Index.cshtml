@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div>
+    <h1 class="mb-4">User Management</h1>
+    <a href="/User/Create" class="btn btn-primary mb-3">Add New User</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Photo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int index = 1;
+            }
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@index</td>
+                    <td>@user.Nama</td>
+                    <td>@user.NoTelp</td>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(user.Foto))
+                        {
+                            <img src="/uploads/@user.Foto" alt="Photo" style="width:50px; height:50px; border-radius:50%;" />
+                        }
+                        else
+                        {
+                            <span>No Photo</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="/User/Edit?id=@user.UserId" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/User/Delete?id=@user.UserId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+                index++;
+            }
+        </tbody>
+    </table>
+</div>
