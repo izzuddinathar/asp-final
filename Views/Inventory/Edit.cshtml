@@ -1,0 +1,28 @@
+﻿@model Final.Models.Inventory
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Edit Inventory";
+}
+
+<h1 class="mb-4">Edit Inventory</h1>
+<form method="post">
+    <input type="hidden" name="InventoryId" value="@Model.InventoryId" />
+    <div class="mb-3">
+        <label>Raw Material Name</label>
+        <input type="text" name="NamaBahanPokok" class="form-control" value="@Model.NamaBahanPokok" required />
+    </div>
+    <div class="mb-3">
+        <label>Quantity</label>
+        <input type="number" name="Jumlah" class="form-control" value="@Model.Jumlah" required />
+    </div>
+    <div class="mb-3">
+        <label>Unit</label>
+        <input type="text" name="Satuan" class="form-control" value="@Model.Satuan" required />
+    </div>
+    <div class="mb-3">
+        <label>Supplier</label>
+        <input type="text" name="Supplier" class="form-control" value="@Model.Supplier" required />
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Update</button>
+</form>

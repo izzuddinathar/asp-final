@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Final.Models.Inventory>
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Inventory Management";
+}
+
+<h1 class="mb-4">Inventory Management</h1>
+<a href="/Inventory/Create" class="btn btn-primary mb-3">Add New Inventory</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Raw Material</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Supplier</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var inventory in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@inventory.NamaBahanPokok</td>
+                <td>@inventory.Jumlah</td>
+                <td>@inventory.Satuan</td>
+                <td>@inventory.Supplier</td>
+                <td>
+                    <a href="/Inventory/Edit?id=@inventory.InventoryId" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Inventory/Delete?id=@inventory.InventoryId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
