@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Final.Models.Payment>
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Payment Management";
+}
+
+<h1 class="mb-4">Payment Management</h1>
+<a href="/Payment/Create" class="btn btn-primary mb-3">Add New Payment</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Table Number</th>
+            <th>Menu</th>
+            <th>Quantity</th>
+            <th>Payment Method</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var payment in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@payment.NomorMeja</td>
+                <td>@payment.MenuId</td>
+                <td>@payment.Jumlah</td>
+                <td>@payment.MetodePembayaran</td>
+                <td>@payment.Status</td>
+                <td>
+                    <a href="/Payment/Edit?id=@payment.PaymentId" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Payment/Delete?id=@payment.PaymentId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>

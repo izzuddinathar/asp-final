@@ -1,0 +1,28 @@
+﻿@model Final.Models.Table
+
+@{
+    ViewData["Title"] = "Edit Table";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1 class="mb-4">Edit Table</h1>
+<form method="post">
+    <input type="hidden" name="TableId" value="@Model.TableId" />
+    <div class="mb-3">
+        <label>Table Number</label>
+        <input type="number" name="NomorMeja" class="form-control" value="@Model.NomorMeja" required />
+    </div>
+    <div class="mb-3">
+        <label>Capacity</label>
+        <input type="number" name="Kapasitas" class="form-control" value="@Model.Kapasitas" required />
+    </div>
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="Status" class="form-select" required>
+            <option value="dipesan" selected="@(Model.Status == "dipesan")">Dipesan</option>
+            <option value="tersedia" selected="@(Model.Status == "tersedia")">Tersedia</option>
+            <option value="terisi" selected="@(Model.Status == "terisi")">Terisi</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Update</button>
+</form>

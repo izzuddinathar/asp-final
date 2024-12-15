@@ -15,29 +15,29 @@ namespace Final.Controllers
             switch (role.ToLower())
             {
                 case "owner":
-                    menus.Add(("Sales Reports", "/Reports"));
-                    menus.Add(("Sales Programs", "/Programs"));
+                    menus.Add(("Sales Reports", "/Report/Index"));
+                    menus.Add(("Sales Programs", "/Program/index"));
                     break;
 
                 case "admin":
                     menus.Add(("User Management", "/User/Index"));
-                    menus.Add(("Menu Management", "/Menu"));
-                    menus.Add(("Payments Management", "/Payments"));
-                    menus.Add(("Inventory Management", "/Inventory"));
+                    menus.Add(("Menu Management", "/Menu/Index"));
+                    menus.Add(("Payments Management", "/Payment/Index"));
+                    menus.Add(("Inventory Management", "/Inventory/Index"));
                     break;
 
                 case "waiters":
-                    menus.Add(("Tables", "/Tables"));
-                    menus.Add(("Reservations", "/Reservations"));
-                    menus.Add(("Orders", "/Orders"));
+                    menus.Add(("Tables", "/Table/Index"));
+                    menus.Add(("Reservations", "/Reservation/Index"));
+                    menus.Add(("Orders", "/Order/Index"));
                     break;
 
                 case "cook":
-                    menus.Add(("Orders", "/Orders"));
+                    menus.Add(("Orders", "/Order/Index"));
                     break;
 
                 case "cleaner":
-                    menus.Add(("Tables", "/Tables"));
+                    menus.Add(("Tables", "/Table/Index"));
                     break;
 
                 default:

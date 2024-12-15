@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Final.Models.Order>
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Order Management";
+}
+
+<h1 class="mb-4">Order Management</h1>
+<a href="/Order/Create" class="btn btn-primary mb-3">Add New Order</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Table Number</th>
+            <th>Menu</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@order.NomorMeja</td>
+                <td>@order.MenuId</td>
+                <td>@order.Jumlah</td>
+                <td>@order.StatusPesanan</td>
+                <td>
+                    <a href="/Order/Edit?id=@order.OrderId" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Order/Delete?id=@order.OrderId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>

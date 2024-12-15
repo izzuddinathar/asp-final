@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Add New Table";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1 class="mb-4">Add New Table</h1>
+<form method="post">
+    <div class="mb-3">
+        <label>Table Number</label>
+        <input type="number" name="NomorMeja" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Capacity</label>
+        <input type="number" name="Kapasitas" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="Status" class="form-select" required>
+            <option value="dipesan">Dipesan</option>
+            <option value="tersedia">Tersedia</option>
+            <option value="terisi">Terisi</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Save</button>
+</form>

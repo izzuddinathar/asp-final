@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Final.Models.Reservation>
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Reservation Management";
+}
+
+<h1 class="mb-4">Reservation Management</h1>
+<a href="/Reservation/Create" class="btn btn-primary mb-3">Add New Reservation</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Customer Name</th>
+            <th>Contact Number</th>
+            <th>Reservation Time</th>
+            <th>Table Number</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var reservation in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@reservation.NamaPelanggan</td>
+                <td>@reservation.NomorKontak</td>
+                <td>@reservation.WaktuReservasi.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@reservation.NomorMeja</td>
+                <td>@reservation.Status</td>
+                <td>
+                    <a href="/Reservation/Edit?id=@reservation.ReservasiId" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Reservation/Delete?id=@reservation.ReservasiId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>

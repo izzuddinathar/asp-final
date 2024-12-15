@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Add New Menu";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1 class="mb-4">Add New Menu</h1>
+<form method="post">
+    <div class="mb-3">
+        <label for="nama_menu" class="form-label">Menu Name</label>
+        <input type="text" id="nama_menu" name="NamaMenu" class="form-control" placeholder="Enter menu name" required />
+    </div>
+    <div class="mb-3">
+        <label for="deskripsi" class="form-label">Description</label>
+        <textarea id="deskripsi" name="Deskripsi" class="form-control" rows="3" placeholder="Enter menu description" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="harga" class="form-label">Price</label>
+        <input type="number" step="0.01" id="harga" name="Harga" class="form-control" placeholder="Enter price" required />
+    </div>
+    <div class="mb-3">
+        <label for="kategori" class="form-label">Category</label>
+        <select id="kategori" name="Kategori" class="form-select" required>
+            <option value="cemilan">Cemilan</option>
+            <option value="makanan">Makanan</option>
+            <option value="minuman">Minuman</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="gambar" class="form-label">Image Path</label>
+        <input type="text" id="gambar" name="Gambar" class="form-control" placeholder="Enter image file name or path" />
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Save</button>
+</form>

@@ -8,7 +8,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession(); // Enable session support
 
 // Add connection string for DatabaseHelper
-builder.Configuration.GetConnectionString("DefaultConnection");
+//builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Configuration.AddJsonFile("appsettings.json");
 
 var app = builder.Build();
 

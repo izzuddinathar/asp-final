@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Add Order";
+}
+
+<h1 class="mb-4">Add Order</h1>
+<form method="post">
+    <div class="mb-3">
+        <label>Table</label>
+        <select name="NomorMeja" class="form-select" required>
+            <option value="">-- Select Table --</option>
+            @foreach (var table in ViewBag.Tables as List<int>)
+            {
+                <option value="@table">@table</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Menu</label>
+        <select name="MenuId" class="form-select" required>
+            <option value="">-- Select Menu --</option>
+            @foreach (var menu in ViewBag.Menus as List<(ulong MenuId, string NamaMenu)>)
+            {
+                <option value="@menu.MenuId">@menu.NamaMenu</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Quantity</label>
+        <input type="number" name="Jumlah" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="StatusPesanan" class="form-select" required>
+            <option value="dipesan">Dipesan</option>
+            <option value="diproses">Diproses</option>
+            <option value="disajikan">Disajikan</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Save</button>
+</form>

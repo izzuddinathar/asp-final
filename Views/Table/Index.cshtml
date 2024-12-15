@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Table Management";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1 class="mb-4">Table Management</h1>
+<a href="/Table/Create" class="btn btn-primary mb-3">Add New Table</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Table Number</th>
+            <th>Capacity</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var table in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@table.NomorMeja</td>
+                <td>@table.Kapasitas</td>
+                <td>@table.Status</td>
+                <td>
+                    <a href="/Table/Edit?id=@table.TableId" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Table/Delete?id=@table.TableId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>

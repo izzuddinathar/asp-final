@@ -1,0 +1,51 @@
+﻿@model Final.Models.Payment
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Edit Payment";
+}
+
+<h1 class="mb-4">Edit Payment</h1>
+<form method="post">
+    <input type="hidden" name="PaymentId" value="@Model.PaymentId" />
+
+    <div class="mb-3">
+        <label>Table</label>
+        <select name="NomorMeja" class="form-select" required>
+            @foreach (var table in ViewBag.Tables as List<int>)
+            {
+                <option value="@table" selected="@(table == Model.NomorMeja)">@table</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Menu</label>
+        <select name="MenuId" class="form-select" required>
+            @foreach (var menu in ViewBag.Menus as List<(ulong MenuId, string NamaMenu)>)
+            {
+                <option value="@menu.MenuId" selected="@(menu.MenuId == Model.MenuId)">@menu.NamaMenu</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Quantity</label>
+        <input type="number" name="Jumlah" class="form-control" value="@Model.Jumlah" required />
+    </div>
+    <div class="mb-3">
+        <label>Payment Method</label>
+        <select name="MetodePembayaran" class="form-select" required>
+            <option value="tunai" selected="@(Model.MetodePembayaran == "tunai")">Tunai</option>
+            <option value="kartu kredit" selected="@(Model.MetodePembayaran == "kartu kredit")">Kartu Kredit</option>
+            <option value="kartu debit" selected="@(Model.MetodePembayaran == "kartu debit")">Kartu Debit</option>
+            <option value="qris" selected="@(Model.MetodePembayaran == "qris")">QRIS</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="Status" class="form-select" required>
+            <option value="belum dibayar" selected="@(Model.Status == "belum dibayar")">Belum Dibayar</option>
+            <option value="lunas" selected="@(Model.Status == "lunas")">Lunas</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Update</button>
+</form>

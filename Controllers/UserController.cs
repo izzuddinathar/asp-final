@@ -6,7 +6,12 @@ namespace Final.Controllers
 {
     public class UserController : BaseController
     {
-        private string connectionString = "Server=localhost;Database=laravel;User=root;Password=password;";
+        private readonly string connectionString;
+
+        public UserController(IConfiguration configuration)
+        {
+            connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
 
         // List All Users
         public IActionResult Index()

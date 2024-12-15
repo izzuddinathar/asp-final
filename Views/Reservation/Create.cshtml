@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Add Reservation";
+}
+
+<h1 class="mb-4">Add Reservation</h1>
+<form method="post">
+    <div class="mb-3">
+        <label>Customer Name</label>
+        <input type="text" name="NamaPelanggan" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Contact Number</label>
+        <input type="text" name="NomorKontak" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Reservation Time</label>
+        <input type="datetime-local" name="WaktuReservasi" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Table</label>
+        <select name="NomorMeja" class="form-select" required>
+            <option value="">-- Select Table --</option>
+            @foreach (var table in ViewBag.Tables as List<int>)
+            {
+                <option value="@table">@table</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="Status" class="form-select" required>
+            <option value="terjadwal">Terjadwal</option>
+            <option value="dibatalkan">Dibatalkan</option>
+            <option value="selesai">Selesai</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Save</button>
+</form>

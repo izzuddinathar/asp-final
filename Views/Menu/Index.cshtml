@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1 class="mb-4">Menu Management</h1>
+<a href="/Menu/Create" class="btn btn-primary mb-3">Add New Menu</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Menu Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var menu in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@menu.NamaMenu</td>
+                <td>@menu.Deskripsi</td>
+                <td>@menu.Harga</td>
+                <td>@menu.Kategori</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(menu.Gambar))
+                    {
+                        <img src="/uploads/@menu.Gambar" style="width:50px; height:50px; border-radius:5px;" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>
+                    <a href="/Menu/Edit?id=@menu.MenuId" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Menu/Delete?id=@menu.MenuId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>

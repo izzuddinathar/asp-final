@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Add Payment";
+}
+
+<h1 class="mb-4">Add Payment</h1>
+<form method="post">
+    <div class="mb-3">
+        <label>Table</label>
+        <select name="NomorMeja" class="form-select" required>
+            <option value="">-- Select Table --</option>
+            @foreach (var table in ViewBag.Tables as List<int>)
+            {
+                <option value="@table">@table</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Menu</label>
+        <select name="MenuId" class="form-select" required>
+            <option value="">-- Select Menu --</option>
+            @foreach (var menu in ViewBag.Menus as List<(ulong MenuId, string NamaMenu)>)
+            {
+                <option value="@menu.MenuId">@menu.NamaMenu</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Quantity</label>
+        <input type="number" name="Jumlah" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Payment Method</label>
+        <select name="MetodePembayaran" class="form-select" required>
+            <option value="tunai">Tunai</option>
+            <option value="kartu kredit">Kartu Kredit</option>
+            <option value="kartu debit">Kartu Debit</option>
+            <option value="qris">QRIS</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="Status" class="form-select" required>
+            <option value="belum dibayar">Belum Dibayar</option>
+            <option value="lunas">Lunas</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Save</button>
+</form>

@@ -1,0 +1,43 @@
+﻿@model Final.Models.Reservation
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Edit Reservation";
+}
+
+<h1 class="mb-4">Edit Reservation</h1>
+<form method="post">
+    <input type="hidden" name="ReservasiId" value="@Model.ReservasiId" />
+
+    <div class="mb-3">
+        <label>Customer Name</label>
+        <input type="text" name="NamaPelanggan" class="form-control" value="@Model.NamaPelanggan" required />
+    </div>
+    <div class="mb-3">
+        <label>Contact Number</label>
+        <input type="text" name="NomorKontak" class="form-control" value="@Model.NomorKontak" required />
+    </div>
+    <div class="mb-3">
+        <label>Reservation Time</label>
+        <input type="datetime-local" name="WaktuReservasi" class="form-control"
+               value="@Model.WaktuReservasi.ToString("yyyy-MM-ddTHH:mm")" required />
+    </div>
+    <div class="mb-3">
+        <label>Table</label>
+        <select name="NomorMeja" class="form-select" required>
+            @foreach (var table in ViewBag.Tables as List<int>)
+            {
+                <option value="@table" selected="@(table == Model.NomorMeja)">@table</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="Status" class="form-select" required>
+            <option value="terjadwal" selected="@(Model.Status == "terjadwal")">Terjadwal</option>
+            <option value="dibatalkan" selected="@(Model.Status == "dibatalkan")">Dibatalkan</option>
+            <option value="selesai" selected="@(Model.Status == "selesai")">Selesai</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Update</button>
+</form>
