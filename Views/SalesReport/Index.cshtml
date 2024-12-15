@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Final.Models.SalesReport>
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Sales Reports";
+}
+
+<h1 class="mb-4">Sales Reports</h1>
+<a href="/SalesReport/Create" class="btn btn-primary mb-3">Add New Report</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Menu</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var report in Model)
+        {
+                <tr>
+                    <td>@index</td>
+                    <td>@report.Tanggal.ToString("yyyy-MM-dd")</td>
+                    <td>@report.MenuId</td>
+                    <td>@report.Harga</td>
+                    <td>@report.Total</td>
+                    <td>
+                        <a href="/SalesReport/Edit?id=@report.ReportId" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/SalesReport/Delete?id=@report.ReportId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+            index++;
+        }
+    </tbody>
+</table>

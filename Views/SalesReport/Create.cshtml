@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Add Sales Report";
+}
+
+<h1 class="mb-4">Add Sales Report</h1>
+<form method="post">
+    <div class="mb-3">
+        <label>Date</label>
+        <input type="date" name="Tanggal" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Menu</label>
+        <select name="MenuId" class="form-select" required>
+            <option value="">-- Select Menu --</option>
+            @foreach (var menu in ViewBag.Menus as List<(ulong MenuId, string NamaMenu)>)
+            {
+                <option value="@menu.MenuId">@menu.NamaMenu</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Price</label>
+        <input type="number" step="0.01" name="Harga" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Total</label>
+        <input type="number" step="0.01" name="Total" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Save</button>
+</form>

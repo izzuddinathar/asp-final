@@ -1,0 +1,48 @@
+﻿@model Final.Models.SalesProgram
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Edit Sales Program";
+}
+
+<h1 class="mb-4">Edit Sales Program</h1>
+<form method="post">
+    <input type="hidden" name="SalesProgramId" value="@Model.SalesProgramId" />
+
+    <div class="mb-3">
+        <label>Program Name</label>
+        <input type="text" name="NamaProgram" class="form-control" value="@Model.NamaProgram" required />
+    </div>
+    <div class="mb-3">
+        <label>Discount</label>
+        <input type="number" step="0.01" name="Diskon" class="form-control" value="@Model.Diskon" required />
+    </div>
+    <div class="mb-3">
+        <label>Applicable Date</label>
+        <input type="date" name="TanggalBerlaku" class="form-control" value="@Model.TanggalBerlaku.ToString("yyyy-MM-dd")" required />
+    </div>
+    <div class="mb-3">
+        <label>Applicable Time</label>
+        <input type="time" name="JamBerlaku" class="form-control" value="@Model.JamBerlaku.ToString(@"hh\:mm")" required />
+    </div>
+    <div class="mb-3">
+        <label>Menu (Optional)</label>
+        <select name="MenuId" class="form-select">
+            <option value="">-- All Menus --</option>
+            @foreach (var menu in ViewBag.Menus as List<(ulong MenuId, string NamaMenu)>)
+            {
+                <option value="@menu.MenuId" selected="@(menu.MenuId == Model.MenuId)">@menu.NamaMenu</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Product Category (Optional)</label>
+        <select name="KategoriProduk" class="form-select">
+            <option value="">-- All Categories --</option>
+            <option value="cemilan" selected="@(Model.KategoriProduk == "cemilan")">Cemilan</option>
+            <option value="makanan" selected="@(Model.KategoriProduk == "makanan")">Makanan</option>
+            <option value="minuman" selected="@(Model.KategoriProduk == "minuman")">Minuman</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Update</button>
+</form>

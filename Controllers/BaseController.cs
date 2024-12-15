@@ -15,8 +15,8 @@ namespace Final.Controllers
             switch (role.ToLower())
             {
                 case "owner":
-                    menus.Add(("Sales Reports", "/Report/Index"));
-                    menus.Add(("Sales Programs", "/Program/index"));
+                    menus.Add(("Sales Reports", "/SalesReport/Index"));
+                    menus.Add(("Sales Programs", "/SalesProgram/index"));
                     break;
 
                 case "admin":

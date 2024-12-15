@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Final.Models.SalesProgram>
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Sales Programs";
+}
+
+<h1 class="mb-4">Sales Programs</h1>
+<a href="/SalesProgram/Create" class="btn btn-primary mb-3">Add New Program</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Program Name</th>
+            <th>Discount</th>
+            <th>Applicable Date</th>
+            <th>Applicable Time</th>
+            <th>Menu</th>
+            <th>Product Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var program in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@program.NamaProgram</td>
+                <td>@program.Diskon</td>
+                <td>@program.TanggalBerlaku.ToString("yyyy-MM-dd")</td>
+                <td>@program.JamBerlaku</td>
+                <td>@(program.MenuId.HasValue ? program.MenuId.ToString() : "All")</td>
+                <td>@(string.IsNullOrEmpty(program.KategoriProduk) ? "All" : program.KategoriProduk)</td>
+                <td>
+                    <a href="/SalesProgram/Edit?id=@program.SalesProgramId" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/SalesProgram/Delete?id=@program.SalesProgramId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
